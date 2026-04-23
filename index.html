@@ -1,221 +1,674 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gran Caffè L'Aquila · Tours</title>
-    <meta name="description" content="Choose your tour: Gelato or Coffee." />
-    <meta property="og:title" content="Gran Caffè L'Aquila · Tours" />
-    <meta property="og:description" content="Choose your tour: Gelato or Coffee." />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&amp;q=80" />
-    <style>
-      :root{
-        --cream:#F5F0E8;
-        --marble:#EDE8DF;
-        --espresso:#1A0A00;
-        --charcoal:#2C2520;
-        --gold:#C9A84C;
-        --gold-light:#E8C96A;
-        --gold-dim:rgba(201,168,76,.26);
-        --shadow:rgba(26,10,0,.10);
-      }
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gran Caffè L'Aquila · Experiential Tours · Philadelphia</title>
+<meta name="description" content="Choose your experience: the Gelato Tour or the Coffee Tour. Gran Caffè L'Aquila, Philadelphia.">
+<meta property="og:title" content="Gran Caffè L'Aquila · Experiential Tours">
+<meta property="og:description" content="Two unique sensory journeys in the heart of Philadelphia.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=80">
 
-      *{box-sizing:border-box}
-      html,body{height:100%}
-      body{
-        margin:0;
-        font-family: "Cormorant Garamond", ui-serif, Georgia, "Times New Roman", Times, serif;
-        background:
-          radial-gradient(900px 420px at 20% 12%, rgba(201,168,76,.14), transparent 60%),
-          radial-gradient(700px 420px at 82% 28%, rgba(201,168,76,.10), transparent 62%),
-          linear-gradient(180deg, var(--cream), var(--marble));
-        color:var(--espresso);
-        -webkit-font-smoothing:antialiased;
-        -moz-osx-font-smoothing:grayscale;
-      }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
-      a{color:inherit;text-decoration:none}
+<style>
+/* ============================================================
+   DESIGN TOKENS — identici ai tour pages
+   ============================================================ */
+:root {
+  --cream:       #F5F0E8;
+  --espresso:    #1A0A00;
+  --gold:        #C9A84C;
+  --gold-light:  #E8C96A;
+  --gold-dim:    rgba(201,168,76,0.18);
+  --terracotta:  #C4622D;
+  --marble:      #EDE8DF;
+  --charcoal:    #2C2520;
 
-      .wrap{max-width:980px;margin:0 auto;padding:56px 20px 72px}
-      .top{
-        display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
-        margin-bottom:26px;
-      }
-      .brand{
-        display:flex;align-items:center;gap:12px;
-      }
-      .mark{
-        width:34px;height:34px;border-radius:999px;
-        background: radial-gradient(circle at 30% 30%, var(--gold-light), var(--gold));
-        box-shadow:0 10px 28px var(--shadow);
-        border:1px solid rgba(201,168,76,.35);
-      }
-      .k{
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        font-size:11px;letter-spacing:.28em;text-transform:uppercase;
-        color:rgba(26,10,0,.60);
-      }
-      .k strong{color:rgba(26,10,0,.80);font-weight:600}
+  --ff-display:  'Cormorant Garamond', serif;
+  --ff-caps:     'Cinzel', serif;
+  --ff-body:     'EB Garamond', serif;
+  --ff-mono:     'DM Mono', monospace;
 
-      h1{
-        margin:14px 0 10px;
-        font-size:46px;
-        line-height:1.02;
-        letter-spacing:.01em;
-        color:var(--espresso);
-      }
-      p{
-        margin:0;
-        max-width:70ch;
-        color:rgba(26,10,0,.72);
-        line-height:1.65;
-        font-size:18px;
-      }
+  --ease:        cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-e:      cubic-bezier(0.68, -0.4, 0.27, 1.55);
+}
 
-      .grid{
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-        gap:16px;
-        margin-top:34px;
-      }
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--espresso);
+  color: var(--cream);
+  font-family: var(--ff-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+a { color: inherit; text-decoration: none; }
 
-      .card{
-        display:block;
-        border-radius:18px;
-        border:1px solid rgba(201,168,76,.28);
-        background:rgba(255,255,255,.62);
-        box-shadow:
-          0 22px 55px rgba(26,10,0,.08),
-          0 2px 0 rgba(255,255,255,.65) inset;
-        overflow:hidden;
-        transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-      }
-      .card:hover{
-        transform:translateY(-2px);
-        border-color:rgba(201,168,76,.55);
-        box-shadow:
-          0 28px 70px rgba(26,10,0,.10),
-          0 2px 0 rgba(255,255,255,.70) inset;
-      }
+/* ============================================================
+   AMBIENT BACKGROUND — stesso approccio hero dei tour
+   ============================================================ */
+.bg-layer {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+}
+.bg-img {
+  position: absolute; inset: 0;
+  background:
+    url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1800&q=60&auto=format')
+    center / cover no-repeat;
+  filter: brightness(0.08) saturate(0.4);
+}
+.bg-gradient {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 20% 15%, rgba(201,168,76,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 85% 80%, rgba(196,98,45,0.05) 0%, transparent 65%),
+    radial-gradient(ellipse 100% 40% at 50% 100%, rgba(26,10,0,0.95) 0%, transparent 70%);
+}
 
-      .card-head{
-        padding:18px 18px 14px;
-        background:
-          radial-gradient(520px 180px at 20% 0%, rgba(201,168,76,.16), transparent 60%),
-          linear-gradient(180deg, rgba(245,240,232,.85), rgba(237,232,223,.55));
-        border-bottom:1px solid rgba(26,10,0,.06);
-      }
-      .card-title{
-        margin:8px 0 4px;
-        font-family: "Cinzel", ui-serif, Georgia, serif;
-        font-size:14px;
-        letter-spacing:.16em;
-        text-transform:uppercase;
-        color:rgba(26,10,0,.78);
-      }
-      .card-name{
-        margin:0;
-        font-size:28px;
-        line-height:1.12;
-        color:var(--espresso);
-      }
-      .card-sub{
-        margin:10px 0 0;
-        color:rgba(26,10,0,.66);
-        font-size:16px;
-      }
+/* ============================================================
+   CURSOR
+   ============================================================ */
+@media (pointer: fine) {
+  body { cursor: none; }
+  .cursor-dot {
+    width: 8px; height: 8px; background: var(--gold); border-radius: 50%;
+    position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
+    will-change: transform;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px; border: 1px solid rgba(201,168,76,0.5);
+    border-radius: 50%; position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transition: transform 0.2s var(--ease), width 0.3s, height 0.3s;
+    will-change: transform;
+  }
+  body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--gold); }
+}
 
-      .card-foot{
-        display:flex;align-items:center;justify-content:space-between;gap:12px;
-        padding:14px 18px 18px;
-      }
-      .pill{
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        font-size:11px;
-        letter-spacing:.18em;
-        text-transform:uppercase;
-        color:rgba(26,10,0,.62);
-      }
-      .cta{
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        font-size:11px;
-        letter-spacing:.18em;
-        text-transform:uppercase;
-        color:var(--espresso);
-        border:1px solid rgba(201,168,76,.45);
-        background:rgba(201,168,76,.16);
-        padding:10px 14px;
-        border-radius:999px;
-        transition:background .18s ease, border-color .18s ease;
-        white-space:nowrap;
-      }
-      .card:hover .cta{
-        background:rgba(201,168,76,.22);
-        border-color:rgba(201,168,76,.62);
-      }
+/* ============================================================
+   MARQUEE — identico ai tour
+   ============================================================ */
+.marquee-strip {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+  overflow: hidden; white-space: nowrap;
+  background: rgba(26,10,0,0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gold-dim);
+  padding: 0.65rem 0;
+}
+.marquee-track {
+  display: inline-block;
+  animation: marquee-ltr 30s linear infinite;
+}
+.marquee-track span {
+  font-family: var(--ff-caps); font-size: 10px;
+  letter-spacing: 0.3em; color: rgba(201,168,76,0.35); margin: 0 2rem;
+}
+@keyframes marquee-ltr { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-      footer{
-        margin-top:42px;
-        padding-top:18px;
-        border-top:1px solid rgba(26,10,0,.08);
-        color:rgba(26,10,0,.52);
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        font-size:12px;
-        line-height:1.6;
-      }
-      .links{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap}
-      .links a{opacity:.75}
-      .links a:hover{opacity:1;color:rgba(26,10,0,.86)}
-    </style>
-  </head>
-  <body>
-    <main class="wrap">
-      <div class="top">
-        <div class="brand">
-          <div class="mark" aria-hidden="true"></div>
-          <div class="k"><strong>Gran Caffè L'Aquila</strong> · Philadelphia</div>
-        </div>
-        <div class="k" style="opacity:.55">Tours</div>
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
+.page-wrap {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: clamp(100px, 12vh, 140px) 5% clamp(60px, 8vh, 100px);
+}
+
+/* ============================================================
+   LOGO SVG
+   ============================================================ */
+.logo-wrap {
+  text-align: center; margin-bottom: clamp(2.5rem, 5vh, 4rem);
+  opacity: 0; transform: translateY(-16px);
+  animation: fadeDown 1s var(--ease) forwards 0.3s;
+}
+/* SVG logo ornament line */
+.logo-ornament {
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+.logo-ornament-line {
+  height: 1px; width: clamp(40px, 8vw, 80px);
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.logo-ornament-line.right {
+  background: linear-gradient(to left, transparent, var(--gold));
+}
+.logo-ornament-icon { color: var(--gold); font-size: 18px; opacity: 0.7; }
+
+.logo-main {
+  font-family: var(--ff-caps);
+  font-size: clamp(22px, 4vw, 36px);
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  line-height: 1.15;
+  margin-bottom: 0.4rem;
+}
+.logo-sub {
+  font-family: var(--ff-display); font-style: italic;
+  font-size: clamp(14px, 2vw, 20px);
+  color: rgba(245,240,232,0.45);
+  letter-spacing: 0.06em;
+}
+.logo-location {
+  font-family: var(--ff-caps); font-size: 9px;
+  letter-spacing: 0.35em; color: var(--gold); opacity: 0.45;
+  margin-top: 0.6rem;
+}
+
+/* SVG logo ornament line */
+.logo-ornament {
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+.logo-ornament-line {
+  height: 1px; width: clamp(40px, 8vw, 80px);
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.logo-ornament-line.right {
+  background: linear-gradient(to left, transparent, var(--gold));
+}
+.logo-ornament-icon { color: var(--gold); font-size: 18px; opacity: 0.7; }
+
+/* Real logo image */
+.logo-img-wrap {
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.6rem;
+  position: relative;
+}
+.logo-img-ring {
+  position: absolute; inset: -10px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dim);
+  pointer-events: none;
+  animation: ringPulse 4s ease-in-out infinite;
+}
+.logo-img-ring-2 {
+  position: absolute; inset: -20px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.07);
+  pointer-events: none;
+}
+@keyframes ringPulse {
+  0%,100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.03); }
+}
+.logo-img {
+  width: clamp(100px, 14vw, 150px);
+  height: clamp(100px, 14vw, 150px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(201,168,76,0.35);
+  box-shadow:
+    0 0 0 4px rgba(201,168,76,0.06),
+    0 8px 32px rgba(0,0,0,0.5);
+  filter: brightness(1.05) contrast(1.02);
+  display: block;
+  transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.logo-img-wrap:hover .logo-img {
+  box-shadow:
+    0 0 0 4px rgba(201,168,76,0.15),
+    0 12px 40px rgba(0,0,0,0.6);
+  transform: scale(1.03);
+}
+
+/* ============================================================
+   HEADLINE BLOCK
+   ============================================================ */
+.headline-block {
+  text-align: center; margin-bottom: clamp(3rem, 6vh, 5rem);
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp 1s var(--ease) forwards 0.9s;
+}
+.headline-eyebrow {
+  font-family: var(--ff-caps); font-size: 10px; letter-spacing: 0.3em;
+  color: var(--terracotta); margin-bottom: 1rem; display: block;
+}
+.headline-title {
+  font-family: var(--ff-display); font-style: italic;
+  font-size: clamp(36px, 6vw, 76px);
+  line-height: 0.95; margin-bottom: 1.4rem;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: shimmer 3.5s linear infinite 1.8s;
+}
+@keyframes shimmer { to { background-position: 200% center; } }
+.headline-sub {
+  font-family: var(--ff-body); font-size: clamp(15px, 1.6vw, 18px);
+  color: rgba(245,240,232,0.6); max-width: 50ch; margin: 0 auto; line-height: 1.7;
+}
+
+/* ============================================================
+   TOUR CARDS GRID
+   ============================================================ */
+.tours-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+  width: 100%; max-width: 900px;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 1s var(--ease) forwards 1.3s;
+}
+
+.tour-card {
+  display: block;
+  position: relative; overflow: hidden;
+  border: 1px solid var(--gold-dim);
+  background: rgba(26,10,0,0.4);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.8rem, 3.5vw, 2.8rem);
+  transition: transform 0.4s var(--ease), border-color 0.35s, box-shadow 0.4s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Hover glow fill from bottom */
+.tour-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 90% 60% at 50% 110%, rgba(201,168,76,0.1) 0%, transparent 65%);
+  opacity: 0; transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+/* Top accent line draws on hover */
+.tour-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s var(--ease);
+}
+.tour-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,168,76,0.55);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.1);
+}
+.tour-card:hover::before { opacity: 1; }
+.tour-card:hover::after  { transform: scaleX(1); }
+
+/* Card BG image */
+.card-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 0.5s ease;
+  filter: brightness(0.15) saturate(0.5);
+  z-index: 0;
+}
+.tour-card:hover .card-bg { opacity: 1; }
+.tour-card-gelato .card-bg {
+  background-image: url('https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=800&q=60&auto=format');
+}
+.tour-card-caffe .card-bg {
+  background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=60&auto=format');
+}
+
+/* Card inner content */
+.card-inner { position: relative; z-index: 1; }
+
+.card-label {
+  font-family: var(--ff-caps); font-size: 9px; letter-spacing: 0.3em;
+  color: var(--gold); opacity: 0.6; margin-bottom: 1.2rem; display: block;
+}
+.card-icon {
+  font-size: clamp(36px, 5vw, 52px);
+  display: block; margin-bottom: 1.4rem;
+  transition: transform 0.4s var(--ease-e);
+}
+.tour-card:hover .card-icon { transform: scale(1.15) rotate(-4deg); }
+
+.card-title {
+  font-family: var(--ff-display); font-style: italic;
+  font-size: clamp(38px, 5vw, 58px); line-height: 0.95;
+  color: var(--gold); margin-bottom: 0.8rem;
+}
+.card-desc {
+  font-family: var(--ff-body); font-size: clamp(14px, 1.3vw, 16px);
+  color: rgba(245,240,232,0.62); line-height: 1.65; margin-bottom: 2rem;
+}
+.card-pills {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+}
+.card-pill {
+  font-family: var(--ff-mono); font-size: 9px; letter-spacing: 0.12em;
+  color: var(--gold); border: 1px solid rgba(201,168,76,0.25);
+  padding: 0.28rem 0.75rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+.tour-card:hover .card-pill { border-color: rgba(201,168,76,0.5); }
+
+.card-cta {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--ff-caps); font-size: 10px; letter-spacing: 0.2em;
+  color: var(--gold); border: 1px solid var(--gold-dim);
+  padding: 0.85rem 1.8rem;
+  position: relative; overflow: hidden;
+  transition: color 0.3s, border-color 0.3s;
+}
+.card-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s var(--ease); z-index: -1;
+}
+.tour-card:hover .card-cta { color: var(--espresso); border-color: var(--gold); }
+.tour-card:hover .card-cta::before { transform: scaleX(1); }
+.cta-arrow {
+  transition: transform 0.3s var(--ease-e);
+  display: inline-block;
+}
+.tour-card:hover .cta-arrow { transform: translateX(4px); }
+
+/* Divider between cards on mobile */
+@media (max-width: 640px) {
+  .tours-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   BOTTOM INFO ROW
+   ============================================================ */
+.info-row {
+  display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center;
+  margin-top: clamp(3rem, 5vh, 4.5rem);
+  padding-top: clamp(2rem, 4vh, 3rem);
+  border-top: 1px solid var(--gold-dim);
+  width: 100%; max-width: 900px;
+  opacity: 0; transform: translateY(14px);
+  animation: fadeUp 0.9s var(--ease) forwards 1.8s;
+}
+.info-item {
+  display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+  text-align: center;
+}
+.info-label {
+  font-family: var(--ff-caps); font-size: 8px;
+  letter-spacing: 0.25em; color: var(--gold); opacity: 0.45;
+}
+.info-val {
+  font-family: var(--ff-body); font-size: clamp(13px, 1.3vw, 15px);
+  opacity: 0.65; line-height: 1.4;
+}
+
+/* ============================================================
+   FOOTER LINKS
+   ============================================================ */
+.page-footer {
+  position: relative; z-index: 1;
+  text-align: center;
+  padding: 0 5% clamp(2rem, 4vh, 3rem);
+  opacity: 0; animation: fadeUp 0.9s var(--ease) forwards 2.1s;
+}
+.footer-links {
+  display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;
+  margin-bottom: 1rem;
+}
+.footer-links a {
+  font-family: var(--ff-caps); font-size: 9px;
+  letter-spacing: 0.2em; color: var(--cream); opacity: 0.35;
+  transition: opacity 0.2s, color 0.2s;
+}
+.footer-links a:hover { opacity: 0.8; color: var(--gold); }
+.footer-copy {
+  font-family: var(--ff-mono); font-size: 10px;
+  opacity: 0.2; letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeDown { from { opacity:0; transform:translateY(-16px); } to { opacity:1; transform:translateY(0); } }
+
+/* ============================================================
+   DECORATIVE PARTICLES (CSS only)
+   ============================================================ */
+.particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.particle {
+  position: absolute; border-radius: 50%;
+  background: var(--gold); opacity: 0;
+  animation: particleDrift linear infinite;
+}
+@keyframes particleDrift {
+  0%   { transform: translateY(110vh) translateX(0) scale(0); opacity: 0; }
+  10%  { opacity: 0.25; }
+  90%  { opacity: 0.08; }
+  100% { transform: translateY(-10vh) translateX(var(--drift)) scale(1); opacity: 0; }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .marquee-track { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Ambient BG -->
+<div class="bg-layer" aria-hidden="true">
+  <div class="bg-img"></div>
+  <div class="bg-gradient"></div>
+</div>
+
+<!-- Particles -->
+<div class="particles" id="particles" aria-hidden="true"></div>
+
+<!-- Marquee -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span>GRAN CAFFÈ L'AQUILA</span><span>·</span>
+    <span>PHILADELPHIA · EST. 2014</span><span>·</span>
+    <span>ARTISANAL GELATO</span><span>·</span>
+    <span>IN-HOUSE ROASTED COFFEE</span><span>·</span>
+    <span>BAR D'ITALIA 2007</span><span>·</span>
+    <span>WORLD CHAMPION</span><span>·</span>
+    <span>1716 CHESTNUT ST</span><span>·</span>
+    <span>GRAN CAFFÈ L'AQUILA</span><span>·</span>
+    <span>PHILADELPHIA · EST. 2014</span><span>·</span>
+    <span>ARTISANAL GELATO</span><span>·</span>
+    <span>IN-HOUSE ROASTED COFFEE</span><span>·</span>
+    <span>BAR D'ITALIA 2007</span><span>·</span>
+    <span>WORLD CHAMPION</span><span>·</span>
+    <span>1716 CHESTNUT ST</span><span>·</span>
+  </div>
+</div>
+
+<!-- MAIN PAGE -->
+<main>
+  <div class="page-wrap">
+
+    <!-- ===== LOGO ===== -->
+    <div class="logo-wrap" aria-label="Gran Caffè L'Aquila">
+
+      <!-- Real logo image -->
+      <div class="logo-img-wrap">
+        <div class="logo-img-ring-2"></div>
+        <div class="logo-img-ring"></div>
+        <img
+          class="logo-img"
+          src="https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/w_300,q_100,fl_lossy,dpr_2.0,c_fit,f_auto,h_300/jweahlnqjsg6h1gsf8b0"
+          alt="Gran Caffè L'Aquila logo"
+          width="150" height="150"
+          loading="eager"
+        >
       </div>
 
-      <h1>Choose your tour</h1>
-      <p>Two experiences, one address: explore the story, craft, and culture behind gelato and coffee.</p>
+      <div class="logo-ornament">
+        <div class="logo-ornament-line"></div>
+        <span class="logo-ornament-icon">✦</span>
+        <div class="logo-ornament-line right"></div>
+      </div>
 
-      <section class="grid" aria-label="Tour selection">
-        <a class="card" href="./Gelato/Gelato.html">
-          <div class="card-head">
-            <div class="card-title">Tour</div>
-            <h2 class="card-name">Gelato Experience</h2>
-            <p class="card-sub">Origins, technique, comparisons, and the "Magnificent Seven".</p>
-          </div>
-          <div class="card-foot">
-            <div class="pill">Artisanal · World Champion</div>
-            <div class="cta">Open →</div>
-          </div>
-        </a>
+      <div class="logo-main">Gran Caffè L'Aquila</div>
+      <div class="logo-sub">Authentic Italian Experience</div>
+      <div class="logo-location">1716 CHESTNUT ST · PHILADELPHIA · PA</div>
+    </div>
 
-        <a class="card" href="./Caffe/caffeTour.html">
-          <div class="card-head">
-            <div class="card-title">Tour</div>
-            <h2 class="card-name">Coffee Experience</h2>
-            <p class="card-sub">Five blends, five cities: the ritual of Italian espresso.</p>
-          </div>
-          <div class="card-foot">
-            <div class="pill">Roasted in-house · Daily</div>
-            <div class="cta">Open →</div>
-          </div>
-        </a>
-      </section>
+    <!-- ===== HEADLINE ===== -->
+    <div class="headline-block">
+      <span class="headline-eyebrow">EXPERIENTIAL TOURS</span>
+      <h1 class="headline-title">Choose Your<br>Experience</h1>
+      <p class="headline-sub">Two sensory journeys into authentic Italian culture. Artisanal gelato or in-house roasted coffee — both tell the same story of excellence.</p>
+    </div>
 
-      <footer>
-        <div>GitHub Pages tip: keep <strong>index.html</strong> in the repo root (or publish from a dedicated folder).</div>
-        <div class="links" aria-label="External links">
-          <a href="https://grancaffelaquila.com" target="_blank" rel="noopener noreferrer">Official website</a>
-          <a href="https://grancaffelaquila.com/pages/gelato-menu" target="_blank" rel="noopener noreferrer">Gelato menu</a>
-          <a href="https://grancaffelaquila.com/collections/coffee" target="_blank" rel="noopener noreferrer">Coffee blends</a>
+    <!-- ===== TOUR CARDS ===== -->
+    <div class="tours-grid" role="list">
+
+      <!-- GELATO CARD -->
+      <a class="tour-card tour-card-gelato" href="./Gelato/Gelato.html" role="listitem" aria-label="Open the Gelato Tour">
+        <div class="card-bg"></div>
+        <div class="card-inner">
+          <span class="card-label">TOUR · MAESTRO STEFANO BIASINI</span>
+          <span class="card-icon" aria-hidden="true">🍨</span>
+          <div class="card-title">Gelato</div>
+          <p class="card-desc">From the Florentine Renaissance to your cup. History, science, and the magnificent seven flavors — including the gastronomic gelato that changed Italian cuisine.</p>
+          <div class="card-pills">
+            <span class="card-pill">History · 1565</span>
+            <span class="card-pill">7 Flavors</span>
+            <span class="card-pill">vs Ice Cream</span>
+            <span class="card-pill">Gastronomic</span>
+          </div>
+          <span class="card-cta">
+            Explore the Tour <span class="cta-arrow">→</span>
+          </span>
         </div>
-      </footer>
-    </main>
-  </body>
-</html>
+      </a>
 
+      <!-- COFFEE CARD -->
+      <a class="tour-card tour-card-caffe" href="./Caffe/caffeTour.html" role="listitem" aria-label="Open the Coffee Tour">
+        <div class="card-bg"></div>
+        <div class="card-inner">
+          <span class="card-label">TOUR · RICCARDO LONGO · AWARD WINNING</span>
+          <span class="card-icon" aria-hidden="true">☕</span>
+          <div class="card-title">Coffee</div>
+          <p class="card-desc">Five blends. Five Italian cities. From Venezia 1580 — the first beans ever brought to Italy — to the bold Napoli dark roast. Roasted in-house every single day.</p>
+          <div class="card-pills">
+            <span class="card-pill">Venice · 1580</span>
+            <span class="card-pill">5 Blends</span>
+            <span class="card-pill">Fresh Roasted</span>
+            <span class="card-pill">Infographic</span>
+          </div>
+          <span class="card-cta">
+            Explore the Tour <span class="cta-arrow">→</span>
+          </span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- ===== INFO ROW ===== -->
+    <div class="info-row" aria-label="Gran Caffè L'Aquila information">
+      <div class="info-item">
+        <span class="info-label">WHERE</span>
+        <span class="info-val">1716 Chestnut St<br>Philadelphia, PA</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">HOURS</span>
+        <span class="info-val">Mon–Thu 7:30am–10pm<br>Fri–Sat 7:30am–11pm</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">PHONE</span>
+        <span class="info-val">(215) 568-5600</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">BAR D'ITALIA</span>
+        <span class="info-val">Best Bar &amp; Caffè<br>in all of Italy · 2007</span>
+      </div>
+    </div>
+
+  </div><!-- /page-wrap -->
+</main>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <nav class="footer-links" aria-label="External links">
+    <a href="https://grancaffelaquila.com" target="_blank" rel="noopener noreferrer">Official Website</a>
+    <a href="https://grancaffelaquila.com/pages/gelato-menu" target="_blank" rel="noopener noreferrer">Gelato Menu</a>
+    <a href="https://grancaffelaquila.com/collections/coffee" target="_blank" rel="noopener noreferrer">Coffee Blends</a>
+    <a href="https://grancaffelaquila.com/pages/our-story" target="_blank" rel="noopener noreferrer">Our Story</a>
+  </nav>
+  <div class="footer-copy">© 2025 Gran Caffè L'Aquila · Philadelphia, Pennsylvania</div>
+</footer>
+
+<script>
+/* ============================================================
+   CURSOR
+   ============================================================ */
+const dot  = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+if (window.matchMedia('(pointer: fine)').matches && dot && ring) {
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+  (function animC() {
+    rx += (mx-rx)*0.15; ry += (my-ry)*0.15;
+    dot.style.transform  = `translate3d(${mx-4}px,${my-4}px,0)`;
+    ring.style.transform = `translate3d(${rx-18}px,${ry-18}px,0)`;
+    requestAnimationFrame(animC);
+  })();
+  document.querySelectorAll('a').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+}
+
+/* ============================================================
+   FLOATING PARTICLES
+   ============================================================ */
+(function spawnParticles() {
+  const container = document.getElementById('particles');
+  if (!container) return;
+  const count = 18;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = 1.5 + Math.random() * 2.5;
+    const left = Math.random() * 100;
+    const duration = 14 + Math.random() * 22;
+    const delay = Math.random() * 20;
+    const drift = (Math.random() - 0.5) * 120;
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${left}%;
+      animation-duration:${duration}s;
+      animation-delay:${delay}s;
+      --drift:${drift}px;
+      opacity:0;
+    `;
+    container.appendChild(p);
+  }
+})();
+
+/* ============================================================
+   CARD HOVER SOUND HINT (subtle visual feedback)
+   ============================================================ */
+document.querySelectorAll('.tour-card').forEach(card => {
+  card.addEventListener('mouseenter', function() {
+    this.style.willChange = 'transform';
+  });
+  card.addEventListener('mouseleave', function() {
+    this.style.willChange = 'auto';
+  });
+});
+</script>
+</body>
+</html>
